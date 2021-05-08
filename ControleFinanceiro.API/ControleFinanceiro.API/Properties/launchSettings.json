@@ -1,7 +1,11 @@
 {
   "iisSettings": {
-    "windowsAuthentication": false,
+    "windowsAuthentication": true,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://192.168.15.110/ControleFinanceiro.API",
+      "sslPort": 0
+    },
     "iisExpress": {
       "applicationUrl": "http://localhost:49811",
       "sslPort": 0
@@ -19,7 +23,17 @@
       "applicationUrl": "http://localhost:5000"
     },
     "IIS Express": {
-      "commandName": "IISExpress"
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "http://localhost:49811/api/categorias",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "use64Bit": true
+    },
+    "IIS": {
+      "commandName": "IIS",
+      "nativeDebugging": true
     }
   }
 }
