@@ -7,7 +7,7 @@
       "sslPort": 0
     },
     "iisExpress": {
-      "applicationUrl": "http://localhost:49811",
+      "applicationUrl": "http://localhost:49812",
       "sslPort": 0
     }
   },
@@ -25,11 +25,12 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "http://localhost:49811/api/categorias",
+      "launchUrl": "http://localhost:49812",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "use64Bit": true
+      "nativeDebugging": true,
+      "jsWebView2Debugging": false
     },
     "IIS": {
       "commandName": "IIS",

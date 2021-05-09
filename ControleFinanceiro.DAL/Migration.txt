@@ -1,0 +1,3 @@
+﻿add-migration CriacaoBD
+
+update-database
