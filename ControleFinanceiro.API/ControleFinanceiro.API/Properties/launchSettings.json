@@ -3,7 +3,7 @@
     "windowsAuthentication": true,
     "anonymousAuthentication": true,
     "iis": {
-      "applicationUrl": "http://192.168.15.110/ControleFinanceiro.API",
+      "applicationUrl": "http://192.168.15.110/",
       "sslPort": 0
     },
     "iisExpress": {
@@ -34,6 +34,11 @@
     },
     "IIS": {
       "commandName": "IIS",
+      "launchBrowser": true,
+      "launchUrl": "http://192.168.15.110/",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
       "nativeDebugging": true
     }
   }
