@@ -10,7 +10,7 @@ export class TiposService {
 
   url: string = "api/tipos";
 
-  constructor(private http: HttpClient ) { }
+  constructor( private http: HttpClient ) { }
 
   pegarTodos(): Observable<Tipo[]> {
     return this.http.get<Tipo[]>(this.url);
