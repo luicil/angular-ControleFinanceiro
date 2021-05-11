@@ -3,7 +3,7 @@
     "windowsAuthentication": true,
     "anonymousAuthentication": true,
     "iis": {
-      "applicationUrl": "http://192.168.15.88/",
+      "applicationUrl": "http://192.168.0.114",
       "sslPort": 0
     },
     "iisExpress": {
@@ -35,7 +35,7 @@
     "IIS": {
       "commandName": "IIS",
       "launchBrowser": true,
-      "launchUrl": "http://192.168.15.88/",
+      "launchUrl": "http://192.168.0.114",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

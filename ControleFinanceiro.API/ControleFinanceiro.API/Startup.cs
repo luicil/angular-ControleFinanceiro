@@ -82,7 +82,7 @@ namespace ControleFinanceiro.API
 
                 if (env.IsDevelopment())
                 {
-                    spa.UseProxyToSpaDevelopmentServer($"http://192.168.15.159:4200/");
+                    spa.UseProxyToSpaDevelopmentServer($"http://192.168.0.102:4200/");
                 };
             });
 

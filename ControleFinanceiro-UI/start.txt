@@ -1,2 +1,0 @@
-use no terminal: ng serve --host 0.0.0.0
-Para que o Windows possa acessar por IP.
