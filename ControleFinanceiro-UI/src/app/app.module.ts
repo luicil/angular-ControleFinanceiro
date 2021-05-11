@@ -13,11 +13,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import { NovaCategoriaComponent } from './components/Categoria/nova-categoria/nova-categoria.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListagemCategoriasComponent
+    ListagemCategoriasComponent,
+    NovaCategoriaComponent
   ],
   imports: [
     BrowserModule,
