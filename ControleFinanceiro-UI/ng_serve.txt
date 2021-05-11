@@ -1,0 +1,11 @@
+Sempre executar: ng serve --host 0.0.0 --disable-host-check
+
+Para que o IP fique disponível para a execução.
+
+
+Grato pelo retorno. Ainda tenho algumas dúvidas. Devido à arquitetura do meu notebook (é um MacBook Pro) o VisualStudio é executado em uma VM, enquanto que no Angular é executado nativo.
+
+Para executar o Angular no Mac, no terminal rodo o seguinte comando: ng serve --host 0.0.0 --disable-host-check
+
+Isso permite que eu consiga acessar por IP dentro da VM, e está funcionando, conforme a imagem abaixo:
+
