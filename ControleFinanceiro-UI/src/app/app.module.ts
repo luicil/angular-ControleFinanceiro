@@ -7,10 +7,12 @@ import { AppComponent } from './app.component';
 
 import { TiposService } from '../app/services/tipos.service';
 import { CategoriasService } from '../app/services/categorias.service';
+import { ListagemCategoriasComponent } from './components/Categoria/listagem-categorias/listagem-categorias.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ListagemCategoriasComponent
   ],
   imports: [
     BrowserModule,
