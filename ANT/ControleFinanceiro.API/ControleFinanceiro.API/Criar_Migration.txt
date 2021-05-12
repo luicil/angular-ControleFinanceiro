@@ -1,4 +1,0 @@
-﻿Abrir terminal na pasta onde está a API
-Executar o comando: dotnet ef migrations add criacaoDB
-
-Executar o comando para criar o banco e as tabelas: dotnet ef database update

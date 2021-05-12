@@ -1,4 +1,0 @@
-﻿O VS para Mac não está fazendo o scafolding
-Executar no terminal:
-dotnet aspnet-codegenerator controller -name CategoriasController -m Categoria -dc Contexto --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
-para cada controller.

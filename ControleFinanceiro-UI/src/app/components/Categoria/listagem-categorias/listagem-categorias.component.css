@@ -16,3 +16,13 @@
     width: 500px;
     
 }
+
+.cabecalho{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.titulo{
+    position: absolute;
+    left: 5px;
+}
