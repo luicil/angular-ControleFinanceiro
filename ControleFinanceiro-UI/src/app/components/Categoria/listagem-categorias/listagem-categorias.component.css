@@ -6,3 +6,13 @@
     width: 100%;
     padding-top: 30px;
 }
+
+.divCard {
+    padding: 60px;
+    width: 600px;
+}
+
+.mat-form-field.mat-form-field {
+    width: 500px;
+    
+}

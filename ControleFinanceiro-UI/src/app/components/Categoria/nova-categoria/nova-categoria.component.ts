@@ -6,7 +6,7 @@ import { TiposService } from 'src/app/services/tipos.service';
 @Component({
   selector: 'app-nova-categoria',
   templateUrl: './nova-categoria.component.html',
-  styleUrls: ['./nova-categoria.component.css']
+  styleUrls: ['../listagem-categorias/listagem-categorias.component.css']
 })
 export class NovaCategoriaComponent implements OnInit {
 
@@ -16,13 +16,13 @@ export class NovaCategoriaComponent implements OnInit {
   constructor( private tiposService: TiposService) { }
 
   ngOnInit(): void {
-    this.tiposService.pegarTodos().subscribe(res =>{
+    this.tiposService.pegarTodos().subscribe((res) =>{
       this.tipos = res;
 
       this.formulario = new FormGroup({
         nome: new FormControl(null),
         icone: new FormControl(null),
-        tipoid: new FormControl(null),
+        tipoID: new FormControl(null),
       });
     
     })
