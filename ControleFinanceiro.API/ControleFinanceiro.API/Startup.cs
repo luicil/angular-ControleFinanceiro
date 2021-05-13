@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using ControleFinanceiro.BLL.Models;
 using ControleFinanceiro.DAL;
@@ -82,11 +83,19 @@ namespace ControleFinanceiro.API
 
                 if (env.IsDevelopment())
                 {
-                    spa.UseProxyToSpaDevelopmentServer($"http://192.168.0.102:4200/");
+                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                    {
+                        spa.UseProxyToSpaDevelopmentServer($"http://192.168.0.102:4200/");
+                    } else
+                    {
+                        spa.UseProxyToSpaDevelopmentServer($"http://localhost:4200/");
+                    }
+                        
                 };
             });
 
 
         }
     }
+
 }

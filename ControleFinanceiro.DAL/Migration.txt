@@ -1,3 +1,10 @@
-﻿add-migration CriacaoBD
+﻿WINDOWS:
+
+add-migration CriacaoBD
 
 update-database
+
+MAC:
+
+
+dotnet ef database update --context Contexto -s ../ControleFinanceiro.API/ControleFinanceiro.API -p ../ControleFinanceiro.API/ControleFinanceiro.API
