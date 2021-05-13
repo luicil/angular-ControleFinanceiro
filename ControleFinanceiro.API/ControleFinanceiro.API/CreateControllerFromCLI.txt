@@ -1,1 +1,9 @@
-﻿
+﻿Abra o terminal no projeto API
+execute a linha de comando:
+
+sudo dotnet aspnet-codegenerator --project . controller -name CartaoController -api -m Cartao -dc Contexto -outDir Controllers
+
+-name: nome do controller
+-m: model para o controller
+-dc: dbContext para o controller
+-outDir: pasta para o arquivo .cs do Controller
