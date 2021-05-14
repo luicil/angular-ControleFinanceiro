@@ -1,3 +1,4 @@
+import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,6 +15,7 @@ import { TiposService } from 'src/app/services/tipos.service';
 })
 export class AtualizarCategoriaComponent implements OnInit {
 
+  nomeCategoria: string;
   categoria: Observable<Categoria>;
   tipos: Tipo[];
   formulario: any;
@@ -24,13 +26,14 @@ export class AtualizarCategoriaComponent implements OnInit {
     private categoriasSerivce: CategoriasService) { }
 
   ngOnInit(): void {
-
+    
     const categoriaid = this.route.snapshot.params.id;
     this.tiposService.pegarTodos().subscribe(res =>{
       this.tipos = res;
     })
 
     this.categoriasSerivce.pegarCategoriaID(categoriaid).subscribe(res =>{
+      this.nomeCategoria = res.Nome;
       this.formulario = new FormGroup({
         categoriaid: new FormControl(res.CategoriaID),
         nome: new FormControl(res.Nome),
@@ -42,6 +45,10 @@ export class AtualizarCategoriaComponent implements OnInit {
 
   get propriedade(){
     return this.formulario.controls;
+  }
+
+  voltarListagem(): void {
+    this.router.navigate(["categorias/listagemcategorias"]);
   }
 
 }

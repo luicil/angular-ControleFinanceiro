@@ -1,4 +1,7 @@
 ﻿Abra o terminal no projeto API
+
+Instale: dotnet tool install -g dotnet-aspnet-codegenerator --version 3.1.5
+
 execute a linha de comando:
 
 sudo dotnet aspnet-codegenerator --project . controller -name CartaoController -api -m Cartao -dc Contexto -outDir Controllers

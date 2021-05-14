@@ -6,5 +6,6 @@ update-database
 
 MAC:
 
+Instale: dotnet tool install --global dotnet-ef --version 3.1.7
 
 dotnet ef database update --context Contexto -s ../ControleFinanceiro.API/ControleFinanceiro.API -p ../ControleFinanceiro.API/ControleFinanceiro.API
