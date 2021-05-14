@@ -15,6 +15,7 @@ import { TiposService } from 'src/app/services/tipos.service';
 })
 export class AtualizarCategoriaComponent implements OnInit {
 
+  categoriaid: number;
   nomeCategoria: string;
   categoria: Observable<Categoria>;
   tipos: Tipo[];
@@ -27,12 +28,12 @@ export class AtualizarCategoriaComponent implements OnInit {
 
   ngOnInit(): void {
     
-    const categoriaid = this.route.snapshot.params.id;
+    this.categoriaid = this.route.snapshot.params.id;
     this.tiposService.pegarTodos().subscribe(res =>{
       this.tipos = res;
     })
 
-    this.categoriasSerivce.pegarCategoriaID(categoriaid).subscribe(res =>{
+    this.categoriasSerivce.pegarCategoriaID(this.categoriaid).subscribe(res =>{
       this.nomeCategoria = res.Nome;
       this.formulario = new FormGroup({
         categoriaid: new FormControl(res.CategoriaID),
@@ -51,4 +52,10 @@ export class AtualizarCategoriaComponent implements OnInit {
     this.router.navigate(["categorias/listagemcategorias"]);
   }
 
+  EnviarFormulario(): void {
+    const categoria = this.formulario.value;
+    this.categoriasSerivce.atualizarCategoria(this.categoriaid, categoria).subscribe(res =>{
+      this.voltarListagem();
+    })
+  }
 }
