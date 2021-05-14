@@ -2,10 +2,10 @@ import { Tipo } from "./Tipo";
 
 export class Categoria {
 
-    CategoriaID: number;
-    Nome: string;
-    Icone: string;
-    TipoID: number;
-    Tipo: Tipo;
+    categoriaID: number;
+    nome: string;
+    icone: string;
+    tipoID: number;
+    tipo: Tipo;
 
 }

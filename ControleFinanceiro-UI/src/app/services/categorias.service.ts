@@ -5,7 +5,7 @@ import { Categoria } from '../models/Categoria';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json',
+    'Content-Type': 'application/json'
 
   })
 };
@@ -23,8 +23,8 @@ export class CategoriasService {
     return this.http.get<Categoria[]>(this.url);
   }
   
-  pegarCategoriaID(categoriaID: number): Observable<Categoria> {
-    const apiURL = `$(this.url)/$(categoriaID)`;
+  pegarcategoriaID(categoriaID: number): Observable<Categoria> {
+    const apiURL = `${this.url}/${categoriaID}`;
     return this.http.get<Categoria>(apiURL);
   }
 
@@ -33,12 +33,12 @@ export class CategoriasService {
   }
 
   atualizarCategoria(categoriaID: number, categoria: Categoria): Observable<any> {
-    const apiURL = `$(this.url)/$(categoriaID)`;
-    return this.http.put<Categoria>(this.url, categoria, httpOptions);
+    const apiURL = `${this.url}/${categoriaID}`;
+    return this.http.put<Categoria>(apiURL, categoria, httpOptions);
   }
 
   excluirCategoria(categoriaID: number): Observable<any> {
-    const apiURL = `$(this.url)/$(categoriaID)`;
+    const apiURL = `${this.url}/${categoriaID}`;
     return this.http.delete<number>(apiURL, httpOptions);
   }
 

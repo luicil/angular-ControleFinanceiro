@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 
 import { TiposService } from '../app/services/tipos.service';
 import { CategoriasService } from '../app/services/categorias.service';
-import { ListagemCategoriasComponent } from './components/Categoria/listagem-categorias/listagem-categorias.component';
+import { ListagemCategoriasComponent, DialogExclusaoCategoriaComponent } from './components/Categoria/listagem-categorias/listagem-categorias.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatTableModule} from '@angular/material/table';
@@ -22,13 +22,15 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatSelectModule} from '@angular/material/select';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { AtualizarCategoriaComponent } from './components/Categoria/atualizar-categoria/atualizar-categoria.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListagemCategoriasComponent,
     NovaCategoriaComponent,
-    AtualizarCategoriaComponent
+    AtualizarCategoriaComponent,
+    DialogExclusaoCategoriaComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import { AtualizarCategoriaComponent } from './components/Categoria/atualizar-ca
     MatInputModule,
     MatDividerModule,
     MatSelectModule,
-    MatGridListModule
+    MatGridListModule,
+    MatDialogModule
   ],
   providers: [
     TiposService,
