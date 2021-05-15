@@ -37,9 +37,10 @@ export class ListagemCategoriasComponent implements OnInit {
       }
     }).afterClosed().subscribe(res =>{
       if(res){
+        debugger;
         this.categoriasService.pegarTodos().subscribe(dados =>{
           this.Categorias.data = dados;
-          this.ExibirColunas();
+          this.displayedcolumns = this.ExibirColunas();
         });
       }
     });
