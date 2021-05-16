@@ -6,6 +6,8 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using ControleFinanceiro.BLL.Models;
 using ControleFinanceiro.DAL;
+using ControleFinanceiro.DAL.Interfaces;
+using ControleFinanceiro.DAL.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -33,6 +35,8 @@ namespace ControleFinanceiro.API
             services.AddDbContext<Contexto>(o => o.UseSqlServer(Configuration.GetConnectionString("ConexaoDB")));
 
             services.AddIdentity<Usuario, Funcao>().AddEntityFrameworkStores<Contexto>();
+
+            services.AddScoped<ICategoriaRepositorio, CategoriaRepositorio>();
 
             services.AddCors();
 

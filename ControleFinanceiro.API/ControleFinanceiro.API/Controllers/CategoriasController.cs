@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ControleFinanceiro.BLL.Models;
 using ControleFinanceiro.DAL;
+using ControleFinanceiro.DAL.Interfaces;
 
 namespace ControleFinanceiro.API.Controllers
 {
@@ -14,25 +15,27 @@ namespace ControleFinanceiro.API.Controllers
     [ApiController]
     public class CategoriasController : ControllerBase
     {
-        private readonly Contexto _context;
+     
+        private readonly ICategoriaRepositorio _categoriaRepositorio;
 
-        public CategoriasController(Contexto context)
+        //public CategoriasController(Contexto context)
+        public CategoriasController(ICategoriaRepositorio categoriaRepositorio)
         {
-            _context = context;
+            _categoriaRepositorio = categoriaRepositorio;
         }
 
         // GET: api/Categorias
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Categoria>>> GetCategorias()
         {
-            return await _context.Categorias.Include(t => t.Tipo).ToListAsync();
+            return await _categoriaRepositorio.PegarTodos().ToListAsync();
         }
 
         // GET: api/Categorias/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Categoria>> GetCategoria(int id)
         {
-            var categoria = await _context.Categorias.FindAsync(id);
+            var categoria = await _categoriaRepositorio.PegarPeloID(id);
 
             if (categoria == null)
             {
@@ -52,26 +55,16 @@ namespace ControleFinanceiro.API.Controllers
             {
                 return BadRequest();
             }
-
-            _context.Entry(categoria).State = EntityState.Modified;
-
-            try
+            if (ModelState.IsValid)
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CategoriaExists(id))
+                await _categoriaRepositorio.Atualizar(categoria);
+                return Ok(new
                 {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                    mensagem = $"Categoria {categoria.Nome} atualizada com sucesso !"
+                });
             }
+            return BadRequest(ModelState);
 
-            return NoContent();
         }
 
         // POST: api/Categorias
@@ -80,31 +73,43 @@ namespace ControleFinanceiro.API.Controllers
         [HttpPost]
         public async Task<ActionResult<Categoria>> PostCategoria(Categoria categoria)
         {
-            _context.Categorias.Add(categoria);
-            await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCategoria", new { id = categoria.CategoriaID }, categoria);
+            if (ModelState.IsValid)
+            {
+
+                await _categoriaRepositorio.Inserir(categoria);
+
+                return Ok(new
+                {
+                    mensagem = $"Categoria {categoria.Nome} cadastrada com sucesso !"
+                });
+
+            }
+
+            return BadRequest(ModelState);
+
         }
 
         // DELETE: api/Categorias/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Categoria>> DeleteCategoria(int id)
         {
-            var categoria = await _context.Categorias.FindAsync(id);
-            if (categoria == null)
+
+            var categoria = await _categoriaRepositorio.PegarPeloID(id);
+
+            if(categoria == null)
             {
                 return NotFound();
             }
+           await _categoriaRepositorio.Excluir(id);
 
-            _context.Categorias.Remove(categoria);
-            await _context.SaveChangesAsync();
 
-            return categoria;
+            return Ok(new
+            {
+                mensagem = $"Categoria {categoria.Nome} cadastrada com sucesso !"
+            });
+
         }
 
-        private bool CategoriaExists(int id)
-        {
-            return _context.Categorias.Any(e => e.CategoriaID == id);
-        }
     }
 }
