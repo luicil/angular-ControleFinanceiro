@@ -1,7 +1,9 @@
 ﻿using System;
+using ControleFinanceiro.BLL.Models;
+
 namespace ControleFinanceiro.DAL.Interfaces
 {
-    public interface ITipoRepositorio
+    public interface ITipoRepositorio : IRepositorioGenerico<Tipo>
     {
     }
 }

@@ -38,6 +38,8 @@ namespace ControleFinanceiro.API
 
             services.AddScoped<ICategoriaRepositorio, CategoriaRepositorio>();
 
+            services.AddScoped<ITipoRepositorio, TipoRepositorio>();
+
             services.AddCors();
 
             services.AddSpaStaticFiles(diretorio =>
