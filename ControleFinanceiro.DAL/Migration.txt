@@ -9,3 +9,7 @@ MAC:
 Instale: dotnet tool install --global dotnet-ef --version 3.1.7
 
 dotnet ef database update --context Contexto -s ../ControleFinanceiro.API/ControleFinanceiro.API -p ../ControleFinanceiro.API/ControleFinanceiro.API
+
+Criar uma migration:
+
+dotnet ef -s ../ControleFinanceiro.API/ControleFinanceiro.API migrations add CriacaoBD

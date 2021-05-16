@@ -9,13 +9,12 @@
     <Compile Remove="Migrations\20210504100317_CriacaoBD.Designer.cs" />
     <Compile Remove="Migrations\20210504101211_CriacaoLocalBD.cs" />
     <Compile Remove="Migrations\20210504101211_CriacaoLocalBD.Designer.cs" />
-    <Compile Remove="Migrations\20210509203801_CriacaoBD.cs" />
-    <Compile Remove="Migrations\20210509203801_CriacaoBD.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Interfaces\" />
     <Folder Include="Repositories\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
   <ItemGroup>
