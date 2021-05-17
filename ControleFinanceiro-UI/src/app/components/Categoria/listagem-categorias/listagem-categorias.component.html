@@ -22,7 +22,7 @@
                 [matAutocomplete]="auto"
                 />
                 <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                    <mat-option *ngFor="let nome of nomesCategorias" [value]="nome">{{ nome }}</mat-option>
+                    <mat-option *ngFor="let nome of nomesCategorias | async" [value]="nome">{{ nome }}</mat-option>
                 </mat-autocomplete>
             </mat-form-field>
         </form>

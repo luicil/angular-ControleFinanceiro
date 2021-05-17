@@ -24,6 +24,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { AtualizarCategoriaComponent } from './components/Categoria/atualizar-categoria/atualizar-categoria.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatSelectModule,
     MatGridListModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    MatAutocompleteModule
   ],
   providers: [
     TiposService,
