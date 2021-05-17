@@ -1,10 +1,12 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { CategoriasService } from '../../../services/categorias.service';
 import { MatTableDataSource}  from '@angular/material/table';
 import { MatDialog, MAT_DIALOG_DATA  } from '@angular/material/dialog';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
+import { MatPaginator } from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
 
 @Component({
   selector: 'app-listagem-categorias',
@@ -19,22 +21,28 @@ export class ListagemCategoriasComponent implements OnInit {
   optCategorias : string[] = [];
   nomesCategorias : Observable<string[]>;
 
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   constructor(private categoriasService : CategoriasService,
     private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.categoriasService.pegarTodos().subscribe(res =>{
-      this.Categorias.data = res;
 
       res.forEach(cat => {
         this.optCategorias.push(cat.nome);
       });
+
+      this.Categorias.data = res;
+      this.Categorias.paginator = this.paginator;
+      this.Categorias.sort = this.sort;
+
     })
     
     this.displayedcolumns = this.ExibirColunas();
 
-    this.nomesCategorias = this.autoCompleteInput.valueChanges.pipe(startWith(``), map(nome => this.FiltrarNomes(nome)));
+    this.nomesCategorias = this.autoCompleteInput.valueChanges.pipe(startWith(''), map(nome => this.FiltrarNomes(nome)));
     
   }
 
