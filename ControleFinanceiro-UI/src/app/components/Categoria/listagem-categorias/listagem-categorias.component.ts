@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { MatPaginator } from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-listagem-categorias',
@@ -94,13 +95,18 @@ export class ListagemCategoriasComponent implements OnInit {
 
 export class DialogExclusaoCategoriaComponent{
  constructor(@Inject(MAT_DIALOG_DATA) public dados: any,
- private categoriasService: CategoriasService) { }
+ private categoriasService: CategoriasService,
+ private snackBar : MatSnackBar) { }
 
   ExcluirCategoria(categoriaID): void {
     console.log("Categoria: "+ categoriaID);
     this.categoriasService.excluirCategoria(categoriaID).subscribe(res =>{
-      console.log("Res: " + res);
-    })
+      this.snackBar.open(res.mensagem,null,{
+        duration: 2000,
+        horizontalPosition: "right",
+        verticalPosition: "top"
+      });
+    });
   }
 
 }

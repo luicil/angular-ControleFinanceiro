@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Tipo } from 'src/app/models/Tipo';
 import { CategoriasService } from 'src/app/services/categorias.service';
 import { TiposService } from 'src/app/services/tipos.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-nova-categoria',
@@ -17,7 +18,8 @@ export class NovaCategoriaComponent implements OnInit {
 
   constructor( private tiposService: TiposService, 
     private categoriasSerivce: CategoriasService,
-    private router: Router) { }
+    private router: Router,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.tiposService.pegarTodos().subscribe((res) =>{
@@ -39,8 +41,13 @@ export class NovaCategoriaComponent implements OnInit {
   EnviarFormulario(): void {
     const categoria = this.formulario.value;
     this.categoriasSerivce.novaCategoria(categoria).subscribe(res =>{
-      this.router.navigate(["categorias/listagemcategorias"]);
-    })
+      this.voltarListagem();
+      this.snackBar.open(res.mensagem,null,{
+        duration: 2000,
+        horizontalPosition: "right",
+        verticalPosition: "top"
+      });
+    });
   }
 
   voltarListagem(): void {
