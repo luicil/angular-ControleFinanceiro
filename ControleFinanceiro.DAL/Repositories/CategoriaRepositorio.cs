@@ -41,5 +41,17 @@ namespace ControleFinanceiro.DAL.Repositories
             }
         }
 
+        public IQueryable<Categoria> FiltrarCategoria(string filtro)
+        {
+            try
+            {
+                var entity = _contexto.Categorias.Include(t => t.Tipo).Where(f => f.Nome.Contains(filtro));
+                return entity;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

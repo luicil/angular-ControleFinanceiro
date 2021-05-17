@@ -111,5 +111,12 @@ namespace ControleFinanceiro.API.Controllers
 
         }
 
+        [HttpGet("FiltrarCategorias/{filtro}")]
+        public async Task<ActionResult<IEnumerable<Categoria>>> FiltrarCategorias(string filtro)
+        {
+            return await _categoriaRepositorio.FiltrarCategoria(filtro).ToListAsync();
+        }
+
+
     }
 }
