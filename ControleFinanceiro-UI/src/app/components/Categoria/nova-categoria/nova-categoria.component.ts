@@ -15,6 +15,7 @@ export class NovaCategoriaComponent implements OnInit {
 
   formulario: any;
   tipos: Tipo[];
+  erros: string[];
 
   constructor( private tiposService: TiposService, 
     private categoriasSerivce: CategoriasService,
@@ -23,6 +24,7 @@ export class NovaCategoriaComponent implements OnInit {
 
   ngOnInit(): void {
     this.tiposService.pegarTodos().subscribe((res) =>{
+      this.erros = [];
       this.tipos = res;
 
       this.formulario = new FormGroup({
@@ -30,7 +32,6 @@ export class NovaCategoriaComponent implements OnInit {
         icone: new FormControl(null),
         tipoID: new FormControl(null),
       });
-    
     })
   }
 
@@ -39,6 +40,7 @@ export class NovaCategoriaComponent implements OnInit {
   }
 
   EnviarFormulario(): void {
+    this.erros = [];
     const categoria = this.formulario.value;
     this.categoriasSerivce.novaCategoria(categoria).subscribe(res =>{
       this.voltarListagem();
@@ -47,6 +49,15 @@ export class NovaCategoriaComponent implements OnInit {
         horizontalPosition: "right",
         verticalPosition: "top"
       });
+    }, 
+    (err) =>{
+      if(err.status == 400){
+        for(const campo in err.error.errors){
+          if(err.error.errors.hasOwnProperty(campo)){
+            this.erros.push(err.error.errors[campo]);
+          }
+        }
+      }
     });
   }
 

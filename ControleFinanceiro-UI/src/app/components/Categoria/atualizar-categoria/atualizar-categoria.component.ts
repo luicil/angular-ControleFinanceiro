@@ -21,6 +21,7 @@ export class AtualizarCategoriaComponent implements OnInit {
   categoria: Observable<Categoria>;
   tipos: Tipo[];
   formulario: any;
+  erros: string[];
 
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -30,6 +31,7 @@ export class AtualizarCategoriaComponent implements OnInit {
 
   ngOnInit(): void {
     
+    this.erros = [];
     this.categoriaID = this.route.snapshot.params.id;
     this.tiposService.pegarTodos().subscribe(res =>{
       this.tipos = res;
@@ -55,6 +57,7 @@ export class AtualizarCategoriaComponent implements OnInit {
   }
 
   EnviarFormulario(): void {
+    this.erros = [];
     const categoria = this.formulario.value;
     this.categoriasSerivce.atualizarCategoria(this.categoriaID, categoria).subscribe(res =>{
       this.voltarListagem();
@@ -63,6 +66,15 @@ export class AtualizarCategoriaComponent implements OnInit {
         horizontalPosition: "right",
         verticalPosition: "top"
       });
+    },
+    (err) =>{
+      if(err.status == 400){
+        for(const campo in err.error.errors){
+          if(err.error.errors.hasOwnProperty(campo)){
+            this.erros.push(err.error.errors[campo]);
+          }
+        }
+      }
     });
   }
 }

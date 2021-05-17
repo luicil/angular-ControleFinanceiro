@@ -22,8 +22,8 @@ namespace ControleFinanceiro.API.Validacoes
                 .MaximumLength(15).WithMessage("Tamanho máximo de 15 caracteres");
 
             RuleFor(n => n.TipoID)
-                .NotNull().WithMessage("Preencha o nome do tipo")
-                .NotEmpty().WithMessage("Preencha o nome do tipo");
+                .NotNull().WithMessage("Escolha o tipo")
+                .NotEmpty().WithMessage("Escolha o tipo");
 
 
         }
