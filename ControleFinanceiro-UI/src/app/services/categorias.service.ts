@@ -42,4 +42,9 @@ export class CategoriasService {
     return this.http.delete<number>(apiURL, httpOptions);
   }
 
+  filtrarCategorias(filtro: string) : Observable<Categoria[]> {
+    const apiURL = `${this.url}/FiltrarCategorias/${filtro}`;
+    return this.http.get<Categoria[]>(apiURL);
+  }
+
 }

@@ -2,6 +2,10 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { CategoriasService } from '../../../services/categorias.service';
 import { MatTableDataSource}  from '@angular/material/table';
 import { MatDialog, MAT_DIALOG_DATA  } from '@angular/material/dialog';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { startWith, map } from 'rxjs/operators';
+
 @Component({
   selector: 'app-listagem-categorias',
   templateUrl: './listagem-categorias.component.html',
@@ -11,6 +15,10 @@ export class ListagemCategoriasComponent implements OnInit {
 
   Categorias = new MatTableDataSource<any>();
   displayedcolumns: string[];
+  autoCompleteInput = new FormControl();
+  optCategorias : string[] = [];
+  nomesCategorias : Observable<string[]>;
+
 
   constructor(private categoriasService : CategoriasService,
     private dialog: MatDialog) { }
@@ -18,9 +26,15 @@ export class ListagemCategoriasComponent implements OnInit {
   ngOnInit(): void {
     this.categoriasService.pegarTodos().subscribe(res =>{
       this.Categorias.data = res;
+
+      res.forEach(cat => {
+        this.optCategorias.push(cat.nome);
+      });
     })
     
     this.displayedcolumns = this.ExibirColunas();
+
+    this.nomesCategorias = this.autoCompleteInput.valueChanges.pipe(startWith(``), map(nome => this.FiltrarNomes(nome)));
     
   }
 
@@ -47,6 +61,23 @@ export class ListagemCategoriasComponent implements OnInit {
     
   }
  
+  FiltrarNomes(nome : string) : string[] {
+    if(nome.trim().length >= 4){
+      this.categoriasService.filtrarCategorias(nome.toLowerCase()).subscribe(res =>{
+        this.Categorias.data = res;
+      });
+    } else {
+      if(nome === ""){
+        this.categoriasService.pegarTodos().subscribe(res =>{
+          this.Categorias.data = res;
+        });
+      }
+    }
+    return this.optCategorias.filter(cat =>{
+      cat.toLowerCase().includes(nome.toLowerCase());
+    });
+  }
+
 }
 @Component({
   selector: 'app-dialog-exclusao-categorias',
