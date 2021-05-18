@@ -1,6 +1,6 @@
 import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Categoria } from 'src/app/models/Categoria';
@@ -41,9 +41,9 @@ export class AtualizarCategoriaComponent implements OnInit {
       this.nomeCategoria = res.nome;
       this.formulario = new FormGroup({
         categoriaid: new FormControl(res.categoriaID),
-        nome: new FormControl(res.nome),
-        icone: new FormControl(res.icone),
-        tipoID: new FormControl(res.tipoID),
+        nome: new FormControl(res.nome, [Validators.required, Validators.maxLength(50)]),
+        icone: new FormControl(res.icone, [Validators.required, Validators.maxLength(15)]),
+        tipoID: new FormControl(res.tipoID, [Validators.required]),
       });      
     });
   }
