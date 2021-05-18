@@ -14,11 +14,11 @@ namespace ControleFinanceiro.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FuncaoController : ControllerBase
+    public class FuncoesController : ControllerBase
     {
         private readonly IFuncaoRepositorio _funcaoRepositorio;
 
-        public FuncaoController(IFuncaoRepositorio funcaoRepositorio)
+        public FuncoesController(IFuncaoRepositorio funcaoRepositorio)
         {
             _funcaoRepositorio = funcaoRepositorio;
         }
