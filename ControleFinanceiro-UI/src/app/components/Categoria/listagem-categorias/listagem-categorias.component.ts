@@ -39,7 +39,7 @@ export class ListagemCategoriasComponent implements OnInit {
       this.categorias.paginator = this.paginator;
       this.categorias.sort = this.sort;
 
-    })
+    });
     
     this.displayedcolumns = this.ExibirColunas();
 
@@ -48,7 +48,7 @@ export class ListagemCategoriasComponent implements OnInit {
   }
 
   ExibirColunas(): string[] {
-    return ['nome', 'icone', 'tipo', 'acoes']
+    return ['nome', 'icone', 'tipo', 'acoes'];
   }
 
   AbrirDialog(categoriaID, nome): void {
