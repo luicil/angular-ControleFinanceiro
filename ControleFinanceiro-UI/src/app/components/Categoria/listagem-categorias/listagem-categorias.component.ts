@@ -16,7 +16,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class ListagemCategoriasComponent implements OnInit {
 
-  Categorias = new MatTableDataSource<any>();
+  categorias = new MatTableDataSource<any>();
   displayedcolumns: string[];
   autoCompleteInput = new FormControl();
   optCategorias : string[] = [];
@@ -35,9 +35,9 @@ export class ListagemCategoriasComponent implements OnInit {
         this.optCategorias.push(cat.nome);
       });
 
-      this.Categorias.data = res;
-      this.Categorias.paginator = this.paginator;
-      this.Categorias.sort = this.sort;
+      this.categorias.data = res;
+      this.categorias.paginator = this.paginator;
+      this.categorias.sort = this.sort;
 
     })
     
@@ -60,9 +60,8 @@ export class ListagemCategoriasComponent implements OnInit {
       }
     }).afterClosed().subscribe(res =>{
       if(res){
-        debugger;
         this.categoriasService.pegarTodos().subscribe(dados =>{
-          this.Categorias.data = dados;
+          this.categorias.data = dados;
           this.displayedcolumns = this.ExibirColunas();
         });
       }
@@ -73,12 +72,12 @@ export class ListagemCategoriasComponent implements OnInit {
   FiltrarNomes(nome : string) : string[] {
     if(nome.trim().length >= 4){
       this.categoriasService.filtrarCategorias(nome.toLowerCase()).subscribe(res =>{
-        this.Categorias.data = res;
+        this.categorias.data = res;
       });
     } else {
       if(nome === ""){
         this.categoriasService.pegarTodos().subscribe(res =>{
-          this.Categorias.data = res;
+          this.categorias.data = res;
         });
       }
     }

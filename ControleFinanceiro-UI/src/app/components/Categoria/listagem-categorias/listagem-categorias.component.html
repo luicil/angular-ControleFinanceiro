@@ -1,8 +1,8 @@
-<div *ngIf = "!Categorias">
+<div *ngIf = "!categorias">
     <mat-progress-bar mode="buffer"></mat-progress-bar>
 </div>
 
-<div class="dadosCategorias" *ngIf="Categorias">
+<div class="dadosCategorias" *ngIf="categorias">
 
     <div class="cabecalho">
         <mat-grid-list cols="2" rowHeight="50px">
@@ -34,7 +34,7 @@
 
     <table mat-table 
     matSort
-    [dataSource] = "Categorias" 
+    [dataSource] = "categorias" 
     class="mat-elevation-z8 tabela">
         <ng-container matColumnDef="nome">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
@@ -58,9 +58,6 @@
         <tr mat-header-row *matHeaderRowDef="displayedcolumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedcolumns"></tr>
     </table>
-    <mat-paginator
-    [pageSizeOptions]="[5, 10, 15, 20]"
-    showFirstLastButtons></mat-paginator>
-
+    <mat-paginator [pageSizeOptions]="[3, 6, 9]" showFirstLastButtons></mat-paginator>
 
 </div>
