@@ -59,6 +59,21 @@ namespace ControleFinanceiro.DAL.Repositories
             }
         }
 
+        public async Task Excluir(TEntity entity)
+        {
+            try
+            {
+                _contexto.Set<TEntity>().Remove(entity);
+                await _contexto.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
         public async Task Inserir(TEntity entity)
         {
             try
