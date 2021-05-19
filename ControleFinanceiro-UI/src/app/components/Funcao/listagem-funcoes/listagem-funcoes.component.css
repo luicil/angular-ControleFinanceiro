@@ -16,3 +16,17 @@
     width: 100%;
     padding-top: 30px;
 }
+
+.divAutoComplete{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.autoCompleteInput{
+    width: 500px;
+}
+
+.mat-form-field.mat-form-field {
+    width: 500px;
+    
+}

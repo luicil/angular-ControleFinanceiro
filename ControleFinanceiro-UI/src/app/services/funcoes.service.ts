@@ -42,4 +42,9 @@ url = 'api/Funcoes';
     return this.http.delete<number>(apiURL, httpOptions);
   }
 
+  filtrarFuncoes(filtro: string) : Observable<Funcao[]> {
+    const apiURL = `${this.url}/FiltrarFuncoes/${filtro}`;
+    return this.http.get<Funcao[]>(apiURL);
+  }
+
 }

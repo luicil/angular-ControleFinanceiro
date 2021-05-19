@@ -44,12 +44,30 @@ export class ListagemFuncoesComponent implements OnInit {
 
     this.displayedcolumns = this.ExibirColunas();
 
-    //this.nomesFuncoes = this.autoCompleteInput.valueChanges.pipe(startWith(''), map(nome => this.FiltrarNomes(nome)));
+    this.nomesFuncoes = this.autoCompleteInput.valueChanges.pipe(startWith(""), map(nome => this.FiltrarNomes(nome)));
 
   }
 
   ExibirColunas(): string[] {
     return ['nome', 'descricao', 'acoes'];
+  }
+
+  FiltrarNomes(nome : string) : string[] {
+    
+    if(nome.trim().length >= 4){
+      this.funcoesService.filtrarFuncoes(nome.toLowerCase()).subscribe(res =>{
+        this.funcoes.data = res;
+      });
+    } else {
+      if(nome === ""){
+        this.funcoesService.pegarTodos().subscribe(res =>{
+          this.funcoes.data = res;
+        });
+      }
+    }
+    return this.optFuncoes.filter(func =>{
+      func.toLowerCase().includes(nome.toLowerCase());
+    });
   }
 
 }
