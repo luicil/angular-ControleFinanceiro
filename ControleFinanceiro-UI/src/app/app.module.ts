@@ -37,6 +37,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ListagemFuncoesComponent, DialogExclusaoFuncaoComponent } from './components/Funcao/listagem-funcoes/listagem-funcoes.component';
 import { NovaFuncaoComponent } from './components/Funcao/nova-funcao/nova-funcao.component';
+import { AtualizarFuncaoComponent } from './components/Funcao/atualizar-funcao/atualizar-funcao.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { NovaFuncaoComponent } from './components/Funcao/nova-funcao/nova-funcao
     DialogExclusaoCategoriaComponent,
     ListagemFuncoesComponent,
     NovaFuncaoComponent,
-    DialogExclusaoFuncaoComponent
+    DialogExclusaoFuncaoComponent,
+    AtualizarFuncaoComponent
   ],
   imports: [
     BrowserModule,
