@@ -32,7 +32,7 @@
     "ControleFinanceiro.API": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "http://localhost:5000/categorias/listagemcategorias",
+      "launchUrl": "http://localhost:5000/funcoes/listagemfuncoes",
       "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

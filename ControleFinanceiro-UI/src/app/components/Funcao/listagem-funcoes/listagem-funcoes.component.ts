@@ -23,8 +23,8 @@ export class ListagemFuncoesComponent implements OnInit {
   optFuncoes : string[] = [];
   nomesFuncoes : Observable<string[]>;
 
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: false}) sort: MatSort;
 
   constructor(private funcoesService: FuncoesService) { }
 
@@ -51,6 +51,5 @@ export class ListagemFuncoesComponent implements OnInit {
   ExibirColunas(): string[] {
     return ['nome', 'descricao', 'acoes'];
   }
-
 
 }

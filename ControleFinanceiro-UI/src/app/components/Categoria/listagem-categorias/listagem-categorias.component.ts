@@ -22,8 +22,8 @@ export class ListagemCategoriasComponent implements OnInit {
   optCategorias : string[] = [];
   nomesCategorias : Observable<string[]>;
 
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: false}) sort: MatSort;
 
   constructor(private categoriasService : CategoriasService,
     private dialog: MatDialog) { }
