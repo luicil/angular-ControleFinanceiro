@@ -115,7 +115,7 @@ namespace ControleFinanceiro.API.Controllers
             });
         }
 
-        [HttpGet("FiltrarFuncoes/{filtro}")]
+        [HttpGet("FiltrarFuncoes/{nomeFuncao}")]
         public async Task<ActionResult<IEnumerable<Funcao>>> FiltrarFuncoes(string nomeFuncao)
         {
             return await _funcaoRepositorio.FiltrarFuncoes(nomeFuncao).ToListAsync();
