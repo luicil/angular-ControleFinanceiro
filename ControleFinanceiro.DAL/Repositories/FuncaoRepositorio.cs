@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using ControleFinanceiro.BLL.Models;
 using ControleFinanceiro.DAL.Interfaces;
@@ -40,6 +41,19 @@ namespace ControleFinanceiro.DAL.Repositories
                 f.Descricao = funcao.Descricao;
 
                 await _gerenciadorFuncoes.UpdateAsync(f);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public IQueryable<Funcao> FiltrarFuncoes(string nomeFuncao)
+        {
+            try
+            {
+                var entity = _contexto.Funcoes.Where(f => f.Name.Contains(nomeFuncao));
+                return entity;
             }
             catch (Exception ex)
             {
