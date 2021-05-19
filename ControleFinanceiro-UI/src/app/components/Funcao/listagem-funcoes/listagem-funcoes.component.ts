@@ -26,7 +26,7 @@ export class ListagemFuncoesComponent implements OnInit {
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
 
-  constructor(private funcoesService: FuncoesService) { }
+  constructor(private funcoesService: FuncoesService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
 
@@ -52,6 +52,23 @@ export class ListagemFuncoesComponent implements OnInit {
     return ['nome', 'descricao', 'acoes'];
   }
 
+  AbrirDialog(funcaoID, name): void {
+    this.dialog.open(DialogExclusaoFuncaoComponent,{
+      data: {
+        id: funcaoID,
+        name: name
+      }
+    }).afterClosed().subscribe(res =>{
+      if(res){
+        this.funcoesService.pegarTodos().subscribe(dados =>{
+          this.funcoes.data = dados;
+          this.displayedcolumns = this.ExibirColunas();
+        });
+      }
+    });
+    
+  }
+
   FiltrarNomes(nome : string) : string[] {
     
     if(nome.trim().length >= 4){
@@ -67,6 +84,28 @@ export class ListagemFuncoesComponent implements OnInit {
     }
     return this.optFuncoes.filter(func =>{
       func.toLowerCase().includes(nome.toLowerCase());
+    });
+  }  
+
+}
+
+@Component({
+  selector: 'app-dialog-exclusao-funcao',
+  templateUrl: 'dialog-exclusao-funcao.html'
+})
+
+export class DialogExclusaoFuncaoComponent{
+ constructor(@Inject(MAT_DIALOG_DATA) public dados: any,
+ private funcoesService: FuncoesService,
+ private snackBar : MatSnackBar) { }
+
+  ExcluirFuncao(funcaoID): void {
+    this.funcoesService.excluirFuncao(funcaoID).subscribe(res =>{
+      this.snackBar.open(res.mensagem,null,{
+        duration: 2000,
+        horizontalPosition: "right",
+        verticalPosition: "top"
+      });
     });
   }
 

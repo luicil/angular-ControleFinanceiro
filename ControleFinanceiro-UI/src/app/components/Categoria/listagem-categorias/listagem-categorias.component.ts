@@ -98,7 +98,6 @@ export class DialogExclusaoCategoriaComponent{
  private snackBar : MatSnackBar) { }
 
   ExcluirCategoria(categoriaID): void {
-    console.log("Categoria: "+ categoriaID);
     this.categoriasService.excluirCategoria(categoriaID).subscribe(res =>{
       this.snackBar.open(res.mensagem,null,{
         duration: 2000,

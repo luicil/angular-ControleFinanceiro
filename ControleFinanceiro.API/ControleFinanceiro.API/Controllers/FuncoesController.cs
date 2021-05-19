@@ -111,7 +111,7 @@ namespace ControleFinanceiro.API.Controllers
             await _funcaoRepositorio.Excluir(funcao);
             return Ok(new
             {
-                mensagem = $"Função {funcao.Name} adicionada com sucesso."
+                mensagem = $"Função {funcao.Name} excluida com sucesso."
             });
         }
 
