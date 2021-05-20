@@ -38,6 +38,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ListagemFuncoesComponent, DialogExclusaoFuncaoComponent } from './components/Funcao/listagem-funcoes/listagem-funcoes.component';
 import { NovaFuncaoComponent } from './components/Funcao/nova-funcao/nova-funcao.component';
 import { AtualizarFuncaoComponent } from './components/Funcao/atualizar-funcao/atualizar-funcao.component';
+import { RegistrarUsuarioComponent } from './components/Usuario/Registro/registrar-usuario/registrar-usuario.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { AtualizarFuncaoComponent } from './components/Funcao/atualizar-funcao/a
     ListagemFuncoesComponent,
     NovaFuncaoComponent,
     DialogExclusaoFuncaoComponent,
-    AtualizarFuncaoComponent
+    AtualizarFuncaoComponent,
+    RegistrarUsuarioComponent
   ],
   imports: [
     BrowserModule,

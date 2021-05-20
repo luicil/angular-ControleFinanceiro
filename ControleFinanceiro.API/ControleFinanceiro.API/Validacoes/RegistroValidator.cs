@@ -12,7 +12,7 @@ namespace ControleFinanceiro.API.Validacoes
             RuleFor(n => n.NomeUsuario)
                 .NotNull().WithMessage("Preencha o nome do usuário")
                 .NotEmpty().WithMessage("Preencha o nome do usuário")
-                .MinimumLength(1).WithMessage("Tamanho mínimo do nome do usuário é de 1 caracter")
+                .MinimumLength(6).WithMessage("Tamanho mínimo do nome do usuário é de 6 caracteres")
                 .MaximumLength(50).WithMessage("Tamanho máximo do nome do usuário é de 50 caracteres");
 
             RuleFor(n => n.CPF)
@@ -38,7 +38,7 @@ namespace ControleFinanceiro.API.Validacoes
                 .NotNull().WithMessage("Preencha a senha")
                 .NotEmpty().WithMessage("Preencha a senha")
                 .MinimumLength(6).WithMessage("Tamanho mínimo a senha é de 6 caracteres")
-                .MaximumLength(50).WithMessage("Tamanho máximo a senha é de 30 caracteres");
+                .MaximumLength(50).WithMessage("Tamanho máximo a senha é de 50 caracteres");
 
             RuleFor(n => n.Foto)
                 .NotNull().WithMessage("Escolha uma foto")
