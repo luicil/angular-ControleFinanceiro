@@ -19,7 +19,7 @@ export class ListagemFuncoesComponent implements OnInit {
 
   funcoes = new MatTableDataSource<any>();
   displayedcolumns: string[];
-  autoCompleteInput = new FormControl();
+  autocompleteInput = new FormControl();
   optFuncoes : string[] = [];
   nomesFuncoes : Observable<string[]>;
 
@@ -44,7 +44,7 @@ export class ListagemFuncoesComponent implements OnInit {
 
     this.displayedcolumns = this.ExibirColunas();
 
-    this.nomesFuncoes = this.autoCompleteInput.valueChanges.pipe(startWith(""), map(nome => this.FiltrarNomes(nome)));
+    this.nomesFuncoes = this.autocompleteInput.valueChanges.pipe(startWith(""), map(nome => this.FiltrarNomes(nome)));
 
   }
 
