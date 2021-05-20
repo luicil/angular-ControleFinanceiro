@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using ControleFinanceiro.API.Extentions;
 using ControleFinanceiro.API.Validacoes;
 using ControleFinanceiro.API.ViewModels;
 using ControleFinanceiro.BLL.Models;
@@ -39,6 +40,8 @@ namespace ControleFinanceiro.API
             services.AddDbContext<Contexto>(o => o.UseSqlServer(Configuration.GetConnectionString("ConexaoDB")));
 
             services.AddIdentity<Usuario, Funcao>().AddEntityFrameworkStores<Contexto>();
+
+            services.ConfigurarSenhaUsuario();
 
             services.AddScoped<ICategoriaRepositorio, CategoriaRepositorio>();
 

@@ -30,6 +30,7 @@
     <Folder Include="Properties\" />
     <Folder Include="Validacoes\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Extentions\" />
   </ItemGroup>
 
 
