@@ -10,3 +10,4 @@ sudo dotnet aspnet-codegenerator --project . controller -name CartaoController -
 -m: model para o controller
 -dc: dbContext para o controller
 -outDir: pasta para o arquivo .cs do Controller
+
