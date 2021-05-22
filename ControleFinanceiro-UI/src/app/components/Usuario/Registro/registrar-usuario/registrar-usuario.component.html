@@ -3,7 +3,7 @@
         <h1>Cadastro de Usuários</h1>
         <mat-divider></mat-divider>
         <div class="formulario">
-            <form [formGroup]="formulario" >
+            <form [formGroup]="formulario" (ngSubmit)="EnviarFormulario()">
                 <div fxLayout="row" fxLayoutGap="30px">
                     <div fxFlex="40" fxLayoutAlign="center end">
                         <div fxLayout="column">
@@ -18,7 +18,7 @@
                                 name="foto"
                                 formControlName="foto"
                                 required
-                                
+                                (change)="SelecionarFoto($event)"
                               />
                               <br /><br /><br /><br />
                               <button

@@ -4,7 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UsuariosService } from '../../../../services/usuarios.service';
-
+import { DadosRegistro } from './../../../../models/DadosRegistro';
 @Component({
   selector: 'app-registrar-usuario',
   templateUrl: './registrar-usuario.component.html',
@@ -37,6 +37,58 @@ export class RegistrarUsuarioComponent implements OnInit {
 
   get propriedade(){
     return this.formulario.controls;
+  }
+
+  SelecionarFoto(fileInput: any): void {
+    this.foto = fileInput.target.files[0] as File;
+    const reader = new FileReader();
+    reader.onload = function (e: any) {
+      document.getElementById('foto').removeAttribute('hidden');
+      document.getElementById('foto').setAttribute('src', e.target.result);
+    };
+
+    reader.readAsDataURL(this.foto);
+  }
+
+  EnviarFormulario(): void {
+    this.erros = [];
+    const usuario = this.formulario.value;
+    const formData: FormData = new FormData();
+
+    if (this.foto != null) {
+      formData.append('file', this.foto, this.foto.name);
+    }
+
+    this.usuariosService.SalvarFoto(formData).subscribe((resultado) => {
+      const dadosRegistro: DadosRegistro = new DadosRegistro();
+      dadosRegistro.nomeusuario = usuario.nomeusuario;
+      dadosRegistro.cpf = usuario.cpf;
+      dadosRegistro.foto = resultado.foto;
+      dadosRegistro.profissao = usuario.profissao;
+      dadosRegistro.email = usuario.email;
+      dadosRegistro.senha = usuario.senha;
+
+      this.usuariosService.RegistrarUsuario(dadosRegistro).subscribe(
+        (dados) => {
+          const emailUsuarioLogado = dados.emailUsuarioLogado;
+          const usuarioId = dados.usuarioId;
+          const tokenUsuarioLogado = dados.tokenUsuarioLogado;
+          localStorage.setItem('EmailUsuarioLogado', emailUsuarioLogado);
+          localStorage.setItem('UsuarioId', usuarioId);
+          localStorage.setItem('TokenUsuarioLogado', tokenUsuarioLogado);
+          this.router.navigate(['/categorias/listagemcategorias']);
+        },
+        (err) => {
+          if (err.status === 400) {
+            for (const campo in err.error.errors) {
+              if (err.error.errors.hasOwnProperty(campo)) {
+                this.erros.push(err.error.errors[campo]);
+              }
+            }
+          }
+        }
+      );
+    });
   }
 
 }

@@ -35,7 +35,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-
+import { NgxMaskModule, IConfig } from 'ngx-mask';
 
 import { ListagemFuncoesComponent, DialogExclusaoFuncaoComponent } from './components/Funcao/listagem-funcoes/listagem-funcoes.component';
 import { NovaFuncaoComponent } from './components/Funcao/nova-funcao/nova-funcao.component';
@@ -78,7 +78,8 @@ import { RegistrarUsuarioComponent } from './components/Usuario/Registro/registr
     MatSortModule,
     MatSnackBarModule,
     MatProgressBarModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [
     TiposService,
