@@ -17,5 +17,7 @@ namespace ControleFinanceiro.DAL.Interfaces
 
         Task LogarUsuario(Usuario usuario, bool lembrar);
 
+        Task<Usuario> pegarPeloEmail(string email);
+
     }
 }

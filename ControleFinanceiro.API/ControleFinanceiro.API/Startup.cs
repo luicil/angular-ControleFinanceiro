@@ -57,6 +57,8 @@ namespace ControleFinanceiro.API
 
             services.AddTransient<IValidator<RegistroViewModel>, RegistroValidator>();
 
+            services.AddTransient<IValidator<LoginViewModel>, LoginValidator>();
+
             services.AddCors();
 
             services.AddSpaStaticFiles(diretorio =>

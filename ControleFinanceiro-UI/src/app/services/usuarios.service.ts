@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { DadosRegistro } from '../models/DadosRegistro';
+import { DadosLogin } from './../models/DadosLogin';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -28,4 +29,8 @@ export class UsuariosService {
     return this.http.post<DadosRegistro>(apiURL, dadosRegistro);
   }
 
+  LogarUsuario(dadosLogin: DadosLogin): Observable<any>{
+    const apiURL = `${this.url}/LogarUsuario`;
+    return this.http.post<DadosRegistro>(apiURL, dadosLogin);
+  }
 }
