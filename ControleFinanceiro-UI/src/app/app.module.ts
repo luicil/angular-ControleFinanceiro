@@ -41,6 +41,7 @@ import { ListagemFuncoesComponent, DialogExclusaoFuncaoComponent } from './compo
 import { NovaFuncaoComponent } from './components/Funcao/nova-funcao/nova-funcao.component';
 import { AtualizarFuncaoComponent } from './components/Funcao/atualizar-funcao/atualizar-funcao.component';
 import { RegistrarUsuarioComponent } from './components/Usuario/Registro/registrar-usuario/registrar-usuario.component';
+import { LoginUsuarioComponent } from './components/Usuario/Login/login-usuario/login-usuario.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { RegistrarUsuarioComponent } from './components/Usuario/Registro/registr
     NovaFuncaoComponent,
     DialogExclusaoFuncaoComponent,
     AtualizarFuncaoComponent,
-    RegistrarUsuarioComponent
+    RegistrarUsuarioComponent,
+    LoginUsuarioComponent
   ],
   imports: [
     BrowserModule,
