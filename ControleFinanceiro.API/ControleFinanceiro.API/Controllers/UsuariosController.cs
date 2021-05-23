@@ -12,8 +12,6 @@ using System.IO;
 using ControleFinanceiro.API.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using ControleFinanceiro.API.Services;
-using System.Collections;
-
 
 namespace ControleFinanceiro.API.Controllers
 {
@@ -22,14 +20,12 @@ namespace ControleFinanceiro.API.Controllers
     public class UsuariosController : ControllerBase
     {
 
-
         private readonly IUsuarioRepositorio _usuarioRepositorio;
 
         public UsuariosController(IUsuarioRepositorio usuarioRepositorio)
         {
             _usuarioRepositorio = usuarioRepositorio;
         }
-
 
         // GET: api/Usuarios/5
         [HttpGet("{id}")]
@@ -124,14 +120,15 @@ namespace ControleFinanceiro.API.Controllers
                 PasswordHasher<Usuario> passwordHasher = new PasswordHasher<Usuario>();
                 if(passwordHasher.VerifyHashedPassword(usuario,usuario.PasswordHash,model.Senha) != PasswordVerificationResult.Failed)
                 {
-                    var funcoesUsuario = _usuarioRepositorio.PegarFuncoesUsuario(usuario);
+                    var funcoesUsuario = await _usuarioRepositorio.PegarFuncoesUsuario(usuario);
                     
                     var token = TokenService.GerarToken(usuario, funcoesUsuario.First());
                     await _usuarioRepositorio.LogarUsuario(usuario, false);
                     return Ok(new
                     {
                         emailUsuarioLogado = usuario.Email,
-                        usuarioId = usuario.Id
+                        usuarioId = usuario.Id,
+                        tokenUsuarioLogado = token
                     });
                 }
                 return NotFound("Usuário e/ou senha incorretos");

@@ -90,7 +90,6 @@ namespace ControleFinanceiro.DAL.Repositories
         {
             try
             {
-
                 return await _gerenciadorUsuarios.GetRolesAsync(usuario);
             }
             catch (Exception ex)

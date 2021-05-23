@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks;
 using ControleFinanceiro.BLL.Models;
 using Microsoft.IdentityModel.Tokens;
 
@@ -28,5 +30,9 @@ namespace ControleFinanceiro.API.Services
 
         }
 
+        internal static object GerarToken(Usuario usuario, Task<IList<string>> funcoesUsuario)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
