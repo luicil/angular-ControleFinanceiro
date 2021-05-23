@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using ControleFinanceiro.BLL.Models;
@@ -85,6 +86,17 @@ namespace ControleFinanceiro.DAL.Repositories
             }
         }
 
+        public async Task<IList<string>> PegarFuncoesUsuario(Usuario usuario)
+        {
+            try
+            {
 
+                return await _gerenciadorUsuarios.GetRolesAsync(usuario);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
