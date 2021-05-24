@@ -42,8 +42,11 @@ import { NovaFuncaoComponent } from './components/Funcao/nova-funcao/nova-funcao
 import { AtualizarFuncaoComponent } from './components/Funcao/atualizar-funcao/atualizar-funcao.component';
 import { RegistrarUsuarioComponent } from './components/Usuario/Registro/registrar-usuario/registrar-usuario.component';
 import { LoginUsuarioComponent } from './components/Usuario/Login/login-usuario/login-usuario.component';
+import { JwtModule } from "@auth0/angular-jwt";
 
-
+export function PegarTokenUsuario(){
+  return localStorage.getItem('TokenUsuarioLogado');
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,7 +84,15 @@ import { LoginUsuarioComponent } from './components/Usuario/Login/login-usuario/
     MatSnackBarModule,
     MatProgressBarModule,
     FlexLayoutModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: PegarTokenUsuario,
+        allowedDomains: ["localhost:5000"],
+        disallowedRoutes: []
+      },
+    })
+    
   ],
   providers: [
     TiposService,
