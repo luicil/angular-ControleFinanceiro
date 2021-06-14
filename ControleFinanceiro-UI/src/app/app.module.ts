@@ -36,6 +36,9 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 import { ListagemFuncoesComponent, DialogExclusaoFuncaoComponent } from './components/Funcao/listagem-funcoes/listagem-funcoes.component';
 import { NovaFuncaoComponent } from './components/Funcao/nova-funcao/nova-funcao.component';
@@ -43,6 +46,9 @@ import { AtualizarFuncaoComponent } from './components/Funcao/atualizar-funcao/a
 import { RegistrarUsuarioComponent } from './components/Usuario/Registro/registrar-usuario/registrar-usuario.component';
 import { LoginUsuarioComponent } from './components/Usuario/Login/login-usuario/login-usuario.component';
 import { JwtModule } from "@auth0/angular-jwt";
+import { DashboardComponent } from './components/Dashboard/dashboard/dashboard.component';
+import { HeaderComponent } from './components/Dashboard/header/header.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 export function PegarTokenUsuario(){
   return localStorage.getItem('TokenUsuarioLogado');
@@ -59,7 +65,9 @@ export function PegarTokenUsuario(){
     DialogExclusaoFuncaoComponent,
     AtualizarFuncaoComponent,
     RegistrarUsuarioComponent,
-    LoginUsuarioComponent
+    LoginUsuarioComponent,
+    DashboardComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -83,6 +91,9 @@ export function PegarTokenUsuario(){
     MatSortModule,
     MatSnackBarModule,
     MatProgressBarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatToolbarModule,
     FlexLayoutModule,
     NgxMaskModule.forRoot(),
     JwtModule.forRoot({
@@ -98,7 +109,8 @@ export function PegarTokenUsuario(){
     TiposService,
     CategoriasService,
     FuncoesService,
-    HttpClientModule
+    HttpClientModule,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })
