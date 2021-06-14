@@ -9,6 +9,7 @@
     <Compile Remove="Migrations\20210504100317_CriacaoBD.Designer.cs" />
     <Compile Remove="Migrations\20210504101211_CriacaoLocalBD.cs" />
     <Compile Remove="Migrations\20210504101211_CriacaoLocalBD.Designer.cs" />
+    <Compile Remove="Interfaces\iCartaoRepositorio.cs" />
   </ItemGroup>
 
   <ItemGroup>
