@@ -22,7 +22,7 @@ export class AuthGuardService implements CanActivate {
 
   VerificarAdministrador(): boolean {
     const token = localStorage.getItem('TokenUsuarioLogado');
-    const tokenUsuario = decode(token);
+    const tokenUsuario : any = decode(token);
 
     if (tokenUsuario.role === 'Administrador') {
       return true;
