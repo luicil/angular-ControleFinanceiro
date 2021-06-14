@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ControleFinanceiro.BLL.Models;
 using ControleFinanceiro.DAL;
 using ControleFinanceiro.DAL.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ControleFinanceiro.API.Controllers
 {
@@ -26,6 +27,7 @@ namespace ControleFinanceiro.API.Controllers
 
         // GET: api/Categorias
         [HttpGet]
+        [Authorize(Roles = "Administrador")]
         public async Task<ActionResult<IEnumerable<Categoria>>> GetCategorias()
         {
             return await _categoriaRepositorio.PegarTodos().ToListAsync();
@@ -33,6 +35,7 @@ namespace ControleFinanceiro.API.Controllers
 
         // GET: api/Categorias/5
         [HttpGet("{id}")]
+        [Authorize(Roles = "Administrador")]
         public async Task<ActionResult<Categoria>> GetCategoria(int id)
         {
             var categoria = await _categoriaRepositorio.PegarPeloID(id);
@@ -49,6 +52,7 @@ namespace ControleFinanceiro.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> PutCategoria(int id, Categoria categoria)
         {
             if (id != categoria.CategoriaID)
@@ -71,6 +75,7 @@ namespace ControleFinanceiro.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
+        [Authorize(Roles = "Administrador")]
         public async Task<ActionResult<Categoria>> PostCategoria(Categoria categoria)
         {
 
@@ -92,6 +97,7 @@ namespace ControleFinanceiro.API.Controllers
 
         // DELETE: api/Categorias/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Administrador")]
         public async Task<ActionResult<Categoria>> DeleteCategoria(int id)
         {
 
@@ -112,6 +118,7 @@ namespace ControleFinanceiro.API.Controllers
         }
 
         [HttpGet("FiltrarCategorias/{filtro}")]
+        [Authorize(Roles = "Administrador")]
         public async Task<ActionResult<IEnumerable<Categoria>>> FiltrarCategorias(string filtro)
         {
             return await _categoriaRepositorio.FiltrarCategoria(filtro).ToListAsync();
